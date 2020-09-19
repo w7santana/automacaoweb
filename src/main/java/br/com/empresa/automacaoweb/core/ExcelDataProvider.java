@@ -1,17 +1,17 @@
 package br.com.empresa.automacaoweb.core;
 
-import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.testng.annotations.DataProvider;
 
 public class ExcelDataProvider {
 	
-	@org.testng.annotations.DataProvider(name="nomeDataProvider")
-	public static Object[][] getData() {
+	@DataProvider(name="nomeDataProvider")
+	public Object[][] getData() throws Exception {
 		
 		Object data[][] = testData("./src/main/resources/data/testdata.xlsx", "Plan1");
 		return data;
 	}
 	
-	public static Object[][] testData(String caminhoExcel, String nomePlanilha) {
+	public Object[][] testData(String caminhoExcel, String nomePlanilha) throws Exception {
 		
 		ManipuladorPlanilha planilha = new ManipuladorPlanilha(caminhoExcel, nomePlanilha);
 		int numLinhas = planilha.getNumLinhasPlanilha();
