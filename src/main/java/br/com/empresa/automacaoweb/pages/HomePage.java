@@ -23,5 +23,17 @@ public class HomePage {
 	@FindBy(id = "exampleDropdownFormPassword2")
 	private WebElement campoSenha;
 	
+	@FindBy(id="input_busca")
+	private WebElement inputBusca;
+	
+	@FindBy(id="btn_pesquisar")
+	private WebElement btnPesquisar;
+	
+	@FindBy(xpath = "//button[contains(text(),'Entrar')]")
+	private WebElement btnEntrar;
+	
+	@FindBy(xpath = "//*[contains(text(),'Houve um erro')]")
+	private WebElement msgEmailSenhaInvalidos;
+	
 
 }

@@ -1,9 +1,9 @@
 package br.com.empresa.automacaoweb.core;
 
 import java.io.FileInputStream;
+import java.io.IOException;
 
 import org.apache.poi.ss.usermodel.DataFormatter;
-import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
@@ -14,7 +14,7 @@ public class ManipuladorPlanilha {
 	private int numeroDeLinhas, numeroDeColunas;
 	DataFormatter formatter = new DataFormatter();
 	
-	public ManipuladorPlanilha(String caminhoExcel, String nomePlanilha) {
+	public ManipuladorPlanilha(String caminhoExcel, String nomePlanilha) throws IOException {
 		try {
 			arquivo = new FileInputStream(caminhoExcel);
 			pastaDeTrabalho = new XSSFWorkbook(arquivo);
@@ -24,7 +24,7 @@ public class ManipuladorPlanilha {
 			System.out.println(e.getCause());
 			System.out.println(e.getMessage());
 			e.printStackTrace();
-		}
+		} 
 		infoPlanilha();
 	}
 	

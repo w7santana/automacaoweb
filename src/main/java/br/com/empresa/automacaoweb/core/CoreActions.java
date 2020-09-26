@@ -3,6 +3,8 @@ package br.com.empresa.automacaoweb.core;
 import static br.com.empresa.automacaoweb.core.Driver.getDriver;
 
 import java.time.Duration;
+import java.util.concurrent.TimeUnit;
+import java.util.function.Function;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -89,9 +91,34 @@ public class CoreActions {
 		action.sendKeys(Keys.PAGE_DOWN);
 	}
 	
-	public void clearAndWrite(By by, String texto) {
-		getDriver().findElement(by).clear();
-		getDriver().findElement(by).sendKeys(texto);
+	public void clearAndWrite(WebElement webElement, String texto) {
+		webElement.clear();
+		webElement.sendKeys(texto);
 	}
+	
+	Function<WebDriver, Boolean> funca = new Function<WebDriver, Boolean>()
+	{
+		public Boolean apply(WebDriver arg0) {
+			return null;
+		}
+	};
+	
+	
+	Function<WebDriver, Boolean> funcao = new Function<WebDriver, Boolean>()
+	 {
+	 public Boolean apply(WebDriver driver) {
+	 WebElement element = driver.findElement(By.id("colorVar"));
+	 String color = element.getAttribute("color");
+	 
+	 System.out.println("The color if the button is " + color);
+	 
+	 if(color.equals("red"))
+	 {
+	 return true;
+	 }
+	 return false;
+	 }
+	 };
+	 
 
 }
