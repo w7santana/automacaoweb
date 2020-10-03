@@ -16,7 +16,7 @@ public class Driver {
 	}
 	
 	private static WebDriver createDriver() {
-		System.setProperty("webdriver.chrome.driver", "./src/main/resources/drivers/chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", ConfigsFileReader.getDriverPath());
 		driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		return driver;
