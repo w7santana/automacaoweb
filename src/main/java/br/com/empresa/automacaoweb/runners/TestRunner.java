@@ -11,7 +11,7 @@ import io.cucumber.testng.CucumberOptions.SnippetType;
 	monochrome = true,
 	plugin = "pretty",
 	snippets = SnippetType.UNDERSCORE,
-	tags = "@LoginEmailSenhaInvalidos"
+	tags = "@Login"
 		
 		
 )

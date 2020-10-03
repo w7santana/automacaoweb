@@ -28,15 +28,14 @@ public class Context {
 	
 	@Before
 	public void setup(Scenario cenario) {
-		LogManager.getLogger(Demo.class);
-		LogManager.getLogger(Demo.class).info("Iniciando cenário: "+cenario.getName());
+//		LogManager.getLogger(Demo.class).info("Iniciando cenário: "+cenario.getName());
 		getDriver().manage().window().maximize();
 		getDriver().manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
 	}
 	
 	@After
 	public void tearDown(Scenario cenario) {
-		LogManager.getLogger(Demo.class).info("Encerrando cenário: "+cenario.getName());
+//		LogManager.getLogger(Demo.class).info("Encerrando cenário: "+cenario.getName());
 //		Thread.sleep(5000);
 		killDriver();
 	}

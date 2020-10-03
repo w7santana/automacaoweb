@@ -16,7 +16,7 @@ public class EmpresasPage {
 	}
 	
 	@FindBy(xpath = "//span[.='Fast Shop']//following::button[contains(text(),'Ver elogios')]")
-	private WebElement btnBuscar;
+	private WebElement btnVerElogios;
 	
 
 }
