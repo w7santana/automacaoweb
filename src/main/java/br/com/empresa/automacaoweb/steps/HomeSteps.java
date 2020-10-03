@@ -6,7 +6,10 @@ import static org.junit.Assert.assertTrue;
 import org.apache.logging.log4j.Logger;
 
 import br.com.empresa.automacaoweb.core.CoreActions;
+import br.com.empresa.automacaoweb.pages.EmpresasPage;
 import br.com.empresa.automacaoweb.pages.HomePage;
+import br.com.empresa.automacaoweb.pages.VisualizarPage;
+import br.com.empresa.automacaoweb.utility.Print;
 import io.cucumber.java.pt.Dado;
 import io.cucumber.java.pt.Então;
 import io.cucumber.java.pt.Quando;
@@ -15,12 +18,16 @@ public class HomeSteps extends CoreActions{
 	
 	Logger logger;
 	HomePage homePage;
+	EmpresasPage empresasPage;
+	VisualizarPage visualizarPage;
 	Context context;
 	
 	
 	public HomeSteps(Context context) {
 		this.context = context;
 		homePage = this.context.getPageObjectManager().getHomePage();
+		empresasPage = this.context.getPageObjectManager().getEmpresasPage();
+		visualizarPage = this.context.getPageObjectManager().getVisualizarPage();
 	}
 	
 
@@ -45,6 +52,23 @@ public class HomeSteps extends CoreActions{
 	    fluentWait(homePage.getMsgEmailSenhaInvalidos());
 //		Print.captureScreenShot(getDriver());
 		assertTrue("Elemento não visível", homePage.getMsgEmailSenhaInvalidos().isDisplayed());
+	}
+	
+	@Quando("o usuário digita no campo de busca {string}")
+	public void o_usuário_digita_no_campo_de_busca(String string) {
+	    homePage.getInputBusca().sendKeys(string);
+	    homePage.getBtnPesquisar().click();
+	}
+
+	@Quando("clica no botão Ver Elogios")
+	public void clica_no_botão_ver_elogios() {
+	    empresasPage.getBtnVerElogios().click();
+	}
+
+	@Então("os dados da empresa devem ser apresentados")
+	public void os_dados_da_empresa_devem_ser_apresentados() {
+		Print.captureScreenShot(getDriver());
+		assertTrue(visualizarPage.getLblPosicionamento().isSelected());
 	}
 
 }
